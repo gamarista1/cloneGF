@@ -1,0 +1,119 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/400-italic.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/montserrat/700-italic.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-hover: var(--brand-hover);
+  --color-surface-dark-1: var(--surface-dark-1);
+  --color-surface-dark-2: var(--surface-dark-2);
+  --color-surface-dark-3: var(--surface-dark-3);
+  --color-surface-lavender: var(--surface-lavender);
+  --color-text-muted: var(--text-muted);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.42 0.24 277);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.02 280);
+  --secondary-foreground: oklch(0.2 0.05 277);
+  --muted: oklch(0.96 0.01 280);
+  --muted-foreground: oklch(0.55 0.02 270);
+  --accent: oklch(0.96 0.02 280);
+  --accent-foreground: oklch(0.2 0.05 277);
+  --border: oklch(0.93 0.02 280);
+  --input: oklch(0.93 0.02 280);
+  --ring: oklch(0.42 0.24 277);
+
+  /* Brand tokens (hex equivalents documented) */
+  --brand: #4A39E8;
+  --brand-secondary: #170DF2;
+  --brand-hover: #4743C5;
+  --surface-dark-1: #07074D;
+  --surface-dark-2: #13132C;
+  --surface-dark-3: #00005F;
+  --surface-lavender: #EFF0FF;
+  --text-muted: #727272;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); }
+}
+
+@layer utilities {
+  .container-page { max-width: 1180px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+  .eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); }
+  .text-display { font-size: clamp(48px, 8vw, 94px); line-height: 0.92; font-weight: 700; letter-spacing: -0.02em; }
+  .text-h2-xl { font-size: clamp(34px, 5vw, 54px); line-height: 1.05; font-weight: 700; letter-spacing: -0.01em; }
+  .text-h2 { font-size: clamp(28px, 3.5vw, 38px); line-height: 1.1; font-weight: 700; letter-spacing: -0.01em; }
+  .text-h3 { font-size: clamp(22px, 2.5vw, 30px); line-height: 1.2; font-weight: 700; }
+
+  .mesh-footer {
+    background-color: var(--surface-dark-1);
+    background-image:
+      radial-gradient(60% 50% at 15% 20%, rgba(74,57,232,0.45), transparent 60%),
+      radial-gradient(45% 40% at 85% 80%, rgba(23,13,242,0.35), transparent 65%),
+      radial-gradient(40% 35% at 50% 100%, rgba(74,57,232,0.25), transparent 70%);
+  }
+
+  .glow-pulse {
+    animation: glow-pulse 2.3s ease-in-out infinite;
+  }
+  @keyframes glow-pulse {
+    0%, 100% { transform: scale(0.93); opacity: 0.85; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  .dot-cascade > span { animation: dot-pulse 1.6s ease-in-out infinite; }
+  .dot-cascade > span:nth-child(2) { animation-delay: 0.2s; }
+  .dot-cascade > span:nth-child(3) { animation-delay: 0.4s; }
+  .dot-cascade > span:nth-child(4) { animation-delay: 0.6s; }
+  @keyframes dot-pulse {
+    0%, 100% { transform: scale(0.7); opacity: 0.45; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow-pulse, .dot-cascade > span { animation: none !important; }
+  }
+}
