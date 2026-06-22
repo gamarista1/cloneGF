@@ -51,7 +51,7 @@ export function Footer() {
                         <div className="mt-6 flex flex-wrap gap-3">
                             <PillButton to="/contact-8" variant="outline-white">Contáctanos</PillButton>
                         </div>
-                        <p className="mt-8 text-xs text-white/50">© {new Date().getFullYear()} Dataclone. Todos los derechos reservados.</p>
+                        <p className="mt-8 text-xs text-white/50">© {new Date().getFullYear()} Grupo Sife. Todos los derechos reservados.</p>
                     </div>
                     {cols.map((c) => (
                         <div key={c.heading}>
@@ -68,5 +68,5 @@ export function Footer() {
                     <div>
                         <div className="text-xs font-bold uppercase tracking-widest text-white/90 mb-4">Contáctanos</div>
                         <ul className="space-y-2.5 text-sm text-white/70">
-                            <li className="flex items-start gap-2"><Mail className="h-4 w-4 shrink-0 mt-0.5" />hola@dataclone.example</li>
+                            <li className="flex items-start gap-2"><Mail className="h-4 w-4 shrink-0 mt-0.5" />hola@gruposife</li>
                             <li className="flex i

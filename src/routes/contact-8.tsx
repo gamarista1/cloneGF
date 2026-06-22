@@ -10,7 +10,7 @@ import { pages } from "@/content/pages";
 const content = pages["contact-8"];
 
 export const Route = createFileRoute("/contact-8")({
-  head: () => ({ meta: [{ title: "Contacto — Dataclone" }, { name: "description", content: content.intro }] }),
+  head: () => ({ meta: [{ title: "Contacto — Grupo Sife" }, { name: "description", content: content.intro }] }),
   component: Contact,
 });
 
@@ -62,7 +62,7 @@ function Contact() {
                 <div className="rounded-2xl border-2 border-[var(--surface-lavender)] p-6">
                   <div className="eyebrow text-xs mb-2">Email</div>
                   <div className="flex items-center gap-2 text-[var(--surface-dark-1)] font-bold">
-                    <Mail className="h-4 w-4 text-[var(--brand)]" />hola@dataclone.example
+                    <Mail className="h-4 w-4 text-[var(--brand)]" />hola@gruposife
                   </div>
                 </div>
                 <div className="rounded-2xl border-2 border-[var(--surface-lavender)] p-6">

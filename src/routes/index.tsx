@@ -12,19 +12,19 @@ import {
   heroContent, stats, pioneers, offering, services,
   challenge, challengeCards, apiDocs, partner, offices, presence, finalCta,
 } from "@/content/home";
-import heroBg from "@/assets/hero-bg.jpg";
-import brandGraphic from "@/assets/brand-graphic.png";
-import challengeGraphic from "@/assets/challenge-graphic.png";
-import partnerBg from "@/assets/partner-bg.jpg";
-import worldMap from "@/assets/world-map.png";
-import ctaBg from "@/assets/cta-bg.jpg";
+import heroBg from "/src/assets/hero-bg.jpg";
+import brandGraphic from "/src/assets/brand-graphic.png";
+import challengeGraphic from "/src/assets/challenge-graphic.png";
+import partnerBg from "/src/assets/partner-bg.jpg";
+import worldMap from "/src/assets/world-map.png";
+import ctaBg from "/src/assets/cta-bg.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dataclone — Software bancario para la transformación digital" },
+      { title: "Grupo Sife — Software bancario para la transformación digital" },
       { name: "description", content: "Plataforma de software bancario: core, canales digitales, integraciones y análisis de datos para instituciones financieras." },
-      { property: "og:title", content: "Dataclone — Directo al core" },
+      { property: "og:title", content: "Grupo Sife — Directo al core" },
       { property: "og:description", content: "Software bancario para más de 100 instituciones financieras en 20+ países." },
     ],
   }),
@@ -70,7 +70,7 @@ function Stats() {
     <section className="bg-white py-24">
       <div className="container-page">
         <RevealOnScroll>
-          <div className="eyebrow text-center mb-3">Dataclone en números</div>
+          <div className="eyebrow text-center mb-3">Grupo Sife en números</div>
           <h2 className="text-h2 text-center text-[var(--surface-dark-1)] mb-16 max-w-2xl mx-auto">El impacto de nuestra tecnología en la región</h2>
         </RevealOnScroll>
         <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
@@ -259,7 +259,7 @@ function Partner() {
       <div className="container-page relative grid lg:grid-cols-2 gap-12 items-center">
         <RevealOnScroll>
           <div className="rounded-3xl bg-white/5 border border-white/10 p-12 backdrop-blur-sm grid place-items-center">
-            <div className="text-3xl font-bold tracking-tight">dataclone × <span className="text-[var(--brand)]">GOS</span></div>
+            <div className="text-3xl font-bold tracking-tight">gruposife × <span className="text-[var(--brand)]">GOS</span></div>
           </div>
         </RevealOnScroll>
         <RevealOnScroll delay={120}>

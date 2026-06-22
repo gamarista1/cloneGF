@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PillButton } from "@/components/ui/PillButton";
 
 export const Route = createFileRoute("/$")({
-  head: () => ({ meta: [{ title: "Próximamente — Dataclone" }] }),
+  head: () => ({ meta: [{ title: "Próximamente — Grupo Sife" }] }),
   component: Stub,
 });
 
