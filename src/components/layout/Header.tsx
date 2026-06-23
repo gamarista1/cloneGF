@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "@/components/ui/Logo";
 import { PillButton } from "@/components/ui/PillButton";
+import { AuthModal } from "@/components/layout/AuthModal";
 import { ChevronDown, Menu, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -151,6 +152,7 @@ function LanguageSelector() {
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -193,6 +195,7 @@ export function Header() {
             </PillButton>
           </div>
           <button
+            onClick={() => setAuthOpen(true)}
             className="hidden md:grid h-10 w-10 place-items-center rounded-full border border-[var(--surface-lavender)] text-[var(--surface-dark-1)] hover:bg-[var(--surface-lavender)]"
             aria-label="Cuenta"
           >
@@ -233,6 +236,8 @@ export function Header() {
           </div>
         )}
       </div>
+
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} initialMode="login" />
     </header>
   );
 }
