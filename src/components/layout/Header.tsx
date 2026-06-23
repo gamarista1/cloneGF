@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "@/components/ui/Logo";
 import { PillButton } from "@/components/ui/PillButton";
-import { ChevronDown, Globe, Menu, User, X } from "lucide-react";
+import { ChevronDown, Menu, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 type MegaMenuItem = { label: string; body: string; href: string };
@@ -39,6 +39,18 @@ const simpleLinks = [
 function NavDropdown({ label, items }: { label: string; items: MegaMenuItem[] }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(false), 250);
+  };
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -52,11 +64,20 @@ function NavDropdown({ label, items }: { label: string; items: MegaMenuItem[] })
     return () => {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
+      cancelClose();
     };
   }, []);
 
   return (
-    <div className="relative" ref={ref} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div
+      className="relative"
+      ref={ref}
+      onMouseEnter={() => {
+        cancelClose();
+        setOpen(true);
+      }}
+      onMouseLeave={scheduleClose}
+    >
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
@@ -66,18 +87,20 @@ function NavDropdown({ label, items }: { label: string; items: MegaMenuItem[] })
         <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute left-1/2 top-full z-30 mt-4 w-80 -translate-x-1/2 rounded-2xl border-2 border-[var(--surface-lavender)] bg-white p-3 shadow-[0_0_30px_rgba(0,0,0,0.18)]">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              onClick={() => setOpen(false)}
-              className="block rounded-xl px-4 py-3 hover:bg-[var(--surface-lavender)]/50 transition-colors"
-            >
-              <div className="text-sm font-bold text-[var(--surface-dark-1)]">{item.label}</div>
-              <div className="text-xs text-[var(--text-muted)] mt-0.5">{item.body}</div>
-            </Link>
-          ))}
+        <div className="absolute left-1/2 top-full z-30 pt-3 w-80 -translate-x-1/2">
+          <div className="rounded-2xl border-2 border-[var(--surface-lavender)] bg-white p-3 shadow-[0_0_30px_rgba(0,0,0,0.18)]">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-xl px-4 py-3 hover:bg-[var(--surface-lavender)]/50 transition-colors"
+              >
+                <div className="text-sm font-bold text-[var(--surface-dark-1)]">{item.label}</div>
+                <div className="text-xs text-[var(--text-muted)] mt-0.5">{item.body}</div>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -88,6 +111,7 @@ function LanguageSelector() {
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState<"ES" | "EN">("ES");
   const ref = useRef<HTMLDivElement>(null);
+  const other = lang === "ES" ? "EN" : "ES";
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -98,30 +122,28 @@ function LanguageSelector() {
   }, []);
 
   return (
-    <div className="relative" ref={ref}>
-      <button
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        className="hidden md:flex items-center gap-1 text-sm font-bold text-[var(--surface-dark-1)] hover:text-[var(--brand)]"
-      >
-        <Globe className="h-4 w-4" /> {lang}
-      </button>
-      {open && (
-        <div className="absolute right-0 top-full z-30 mt-3 w-36 rounded-xl border-2 border-[var(--surface-lavender)] bg-white p-1.5 shadow-[0_0_30px_rgba(0,0,0,0.18)]">
-          {(["ES", "EN"] as const).map((l) => (
-            <button
-              key={l}
-              onClick={() => {
-                setLang(l);
-                setOpen(false);
-              }}
-              className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${l === lang ? "bg-[var(--surface-lavender)] text-[var(--surface-dark-1)]" : "hover:bg-[var(--surface-lavender)]/50"}`}
-            >
-              {l === "ES" ? "Español" : "English"}
-            </button>
-          ))}
-        </div>
-      )}
+    <div className="relative hidden md:block" ref={ref}>
+      <div className="w-20 overflow-hidden rounded-xl border border-[var(--surface-lavender)] bg-white shadow-[0_4px_18px_rgba(0,0,0,0.12)]">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="flex w-full items-center justify-between gap-2 px-3.5 py-2.5 text-sm font-bold text-[var(--brand)]"
+        >
+          {lang}
+          <ChevronDown className={`h-3.5 w-3.5 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+        </button>
+        {open && (
+          <button
+            onClick={() => {
+              setLang(other);
+              setOpen(false);
+            }}
+            className="block w-full border-t border-[var(--surface-lavender)] px-3.5 py-2.5 text-left text-sm font-bold text-[var(--brand)] hover:bg-[var(--surface-lavender)]/40"
+          >
+            {other}
+          </button>
+        )}
+      </div>
     </div>
   );
 }

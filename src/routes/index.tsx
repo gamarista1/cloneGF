@@ -231,7 +231,7 @@ function ApiDocs() {
               <div className="opacity-60">GET /v1/accounts/:id</div>
               <div className="mt-2">{`{`}</div>
               <div className="pl-3"><span className="text-[#a78bfa]">"id"</span>: <span className="text-emerald-300">"acc_42"</span>,</div>
-              <div className="pl-3"><span className="text-[#a78bfa]">"balance"</span>: <span className="text-emerald-300">"12,450.00"</span>,</div>
+              <div className="pl-3"><span className="text-[#a78bfa]">"balance"</span>: <span className="text-emerald-300">"12.450,00"</span>,</div>
               <div className="pl-3"><span className="text-[#a78bfa]">"moneda"</span>: <span className="text-emerald-300">"VES"</span></div>
               <div>{`}`}</div>
             </div>
