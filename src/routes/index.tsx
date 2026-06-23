@@ -12,12 +12,12 @@ import {
   heroContent, stats, pioneers, offering, services,
   challenge, challengeCards, apiDocs, partner, offices, presence, finalCta,
 } from "@/content/home";
-import heroBg from "/src/assets/hero-bg.jpg";
-import brandGraphic from "/src/assets/brand-graphic.png";
-import challengeGraphic from "/src/assets/challenge-graphic.png";
-import partnerBg from "/src/assets/partner-bg.jpg";
-import worldMap from "/src/assets/world-map.png";
-import ctaBg from "/src/assets/cta-bg.jpg";
+const heroBg = "/hero-bg.jpg";
+const brandGraphic = "/brand-graphic.png";
+const challengeGraphic = "/challenge-graphic.png";
+const partnerBg = "/partner-bg.jpg";
+const worldMap = "/world-map.png";
+const ctaBg = "/cta-bg.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,12 +52,14 @@ function Hero() {
           </RevealOnScroll>
         </div>
         <div className="relative hidden lg:flex justify-end">
-          <div className="relative h-80 w-80">
-            <div className="absolute -top-4 -right-4"><LottieDots /></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-60 w-60 rounded-full bg-[var(--brand)]/20 blur-3xl" />
-            <div className="absolute inset-12 rounded-full border border-white/15" />
-            <div className="absolute inset-20 rounded-full border border-white/10" />
-            <div className="absolute inset-28 rounded-full border border-white/5" />
+          <div className="relative h-[28rem] w-[28rem]">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <LottieDots gapClassName="gap-8" dotClassName="h-16 w-16" />
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-[var(--brand)]/20 blur-3xl" />
+            <div className="absolute inset-16 rounded-full border border-white/15" />
+            <div className="absolute inset-28 rounded-full border border-white/10" />
+            <div className="absolute inset-40 rounded-full border border-white/5" />
           </div>
         </div>
       </div>
@@ -230,7 +232,7 @@ function ApiDocs() {
               <div className="mt-2">{`{`}</div>
               <div className="pl-3"><span className="text-[#a78bfa]">"id"</span>: <span className="text-emerald-300">"acc_42"</span>,</div>
               <div className="pl-3"><span className="text-[#a78bfa]">"balance"</span>: <span className="text-emerald-300">"12,450.00"</span>,</div>
-              <div className="pl-3"><span className="text-[#a78bfa]">"currency"</span>: <span className="text-emerald-300">"USD"</span></div>
+              <div className="pl-3"><span className="text-[#a78bfa]">"moneda"</span>: <span className="text-emerald-300">"VES"</span></div>
               <div>{`}`}</div>
             </div>
           </div>
@@ -259,7 +261,7 @@ function Partner() {
       <div className="container-page relative grid lg:grid-cols-2 gap-12 items-center">
         <RevealOnScroll>
           <div className="rounded-3xl bg-white/5 border border-white/10 p-12 backdrop-blur-sm grid place-items-center">
-            <div className="text-3xl font-bold tracking-tight">gruposife × <span className="text-[var(--brand)]">GOS</span></div>
+            <div className="text-3xl font-bold tracking-tight">gruposife + <span className="text-[var(--brand)]">aws</span></div>
           </div>
         </RevealOnScroll>
         <RevealOnScroll delay={120}>

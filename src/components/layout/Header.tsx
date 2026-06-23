@@ -145,7 +145,7 @@ export function Header() {
     >
       <div className="container-page flex h-[88px] items-center justify-between gap-6">
         <Link to="/" className="shrink-0">
-          <Logo className="h-10 w-auto" />
+          <Logo className="h-20 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

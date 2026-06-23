@@ -68,7 +68,8 @@ function Contact() {
                 <div className="rounded-2xl border-2 border-[var(--surface-lavender)] p-6">
                   <div className="eyebrow text-xs mb-2">Oficina central</div>
                   <div className="flex items-start gap-2 text-[var(--surface-dark-1)] font-bold">
-                    <MapPin className="h-4 w-4 text-[var(--brand)] mt-0.5" />1234 Brickell Ave,<br />Miami, FL
+                    <MapPin className="h-4 w-4 text-[var(--brand)] mt-0.5" />Av. Francisco de Miranda, <br /> Parque Cristal, Torre Oeste,
+                    piso 6 oficina 6-1. <br />Los Palos Grandes. Caracas. Venezuela,<br />Caracas, Venezuela
                   </div>
                 </div>
               </div>

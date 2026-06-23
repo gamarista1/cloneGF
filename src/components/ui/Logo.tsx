@@ -6,8 +6,8 @@ export function Logo({ variant = "dark", className = "" }: { variant?: "dark" | 
     <img
       src={logoSrc}
       alt={logoAlt}
-      className={className || "h-12 w-auto max-w-xs"}
-      style={{ minWidth: "120px" }}
+      className={className || "h-24 w-auto max-w-md"}
+      style={{ minWidth: "240px" }}
     />
   );
 }
